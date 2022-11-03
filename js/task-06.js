@@ -1,4 +1,5 @@
 const inputEl = document.querySelector("#validation-input");
+
 const onCheckInputContent = (event) => {
   event.currentTarget.classList.remove("invalid");
   if (
