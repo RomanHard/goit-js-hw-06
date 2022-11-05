@@ -1,12 +1,14 @@
-const inputEl = document.querySelector("#validation-input");
+const validationInput = document.querySelector("#validation-input");
 
-const onCheckInputContent = (event) => {
-  event.currentTarget.classList.remove("invalid");
-  if (
-    event.currentTarget.value.trim().length < event.currentTarget.dataset.length
-  ) {
-    event.currentTarget.classList.add("invalid");
-  }
-  event.currentTarget.classList.add("valid");
+const addRemovePassword = (add, remove) => {
+  validationInput.classList.add(`${add}`);
+  validationInput.classList.remove(`${remove}`);
 };
-inputEl.addEventListener("blur", onCheckInputContent);
+const inputPassword = (e) => {
+  const input = e.currentTarget.value.length;
+  const validInputLength = Number(validationInput.dataset.length);
+  if (input === validInputLength) {
+    addRemovePassword("valid", "invalid");
+  } else addRemovePassword("invalid", "valid");
+};
+validationInput.addEventListener("blur", inputPassword);
